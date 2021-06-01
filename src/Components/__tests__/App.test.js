@@ -19,7 +19,3 @@ it('shows a comment box', () => {
 it('shows a comment list', () => {
     expect(wrapped.find(CommentList).length).toEqual(1);
 });
-
-/* it('displays the comment box appropriately', () => {
-    expect(wrapped.find(CommentBox).contains(<div>Comment Box</div>) == true);
-}); */
