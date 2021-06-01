@@ -14,6 +14,8 @@ function CommentBox() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        //
+
         setValues({userInput: ''})
     }
 
