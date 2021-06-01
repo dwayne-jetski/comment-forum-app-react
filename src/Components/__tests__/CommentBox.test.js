@@ -4,9 +4,19 @@ import 'Components/setupTests'
 import CommentBox from 'Components/CommentBox/CommentBox.jsx';
 
 let wrapped;
+let newComment;
+let textArea;
+let form;
 
 beforeEach(() => {
     wrapped = mount(<CommentBox />);
+    textArea = wrapped.find('textarea');
+    form = wrapped.find('form');
+
+    newComment = textArea.simulate('change', {
+        target: { value: 'new comment', name: 'userInput'}
+    });
+    
 });
 
 afterEach(() => {
@@ -28,16 +38,14 @@ it('has a text area that users can type in', () => {
 });
 
 it('empties the textarea on form submission', () => {
-    const form = wrapped.find('form');
-    const textarea = wrapped.find('textarea');
-
-    textarea.simulate('change', {
-        target: { value: 'new comment', name: 'userInput'}
-    });
-
-    form.simulate('submit');
+    newComment;
 
     wrapped.update();
-    expect(wrapped.find('textarea').prop('value')).toEqual('')
+    expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
+
+    form.simulate('submit');
+    wrapped.update();
+    
+    expect(wrapped.find('textarea').prop('value')).toEqual('');
 })
 
