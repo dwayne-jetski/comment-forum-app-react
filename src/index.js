@@ -6,13 +6,12 @@ import reducers from 'reducers';
 
 import App from './App';
 
+const store = createStore(reducers)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider sore={createStore(reducers, {})}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>
+  , document.getElementById('root')
 );
 
